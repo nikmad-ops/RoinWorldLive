@@ -11,6 +11,8 @@ export default function SignInPage() {
       <main className="section shell" style={{ display: "grid", placeItems: "center" }}>
         <SignIn
           routing="hash"
+          withSignUp
+          signUpUrl="/sign-up"
           forceRedirectUrl="/onboarding"
           signUpForceRedirectUrl="/onboarding"
           fallbackRedirectUrl="/onboarding"
@@ -26,7 +28,7 @@ export default function SignInPage() {
       <h1 style={{ fontSize: 48 }}>Sign in to RoinWorld Live</h1>
       <p className="lead">Access your investment opportunities, applications and project reporting.</p>
       <div style={{ marginTop: 22 }}>
-        <Link href="/onboarding" className="btn btn-primary">Create investor account</Link>
+        <Link href="/sign-up" className="btn btn-primary">Create investor account</Link>
       </div>
     </main>
   );
