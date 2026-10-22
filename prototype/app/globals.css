@@ -82,3 +82,40 @@ h1 { font-size:clamp(44px,6vw,74px); line-height:.98; letter-spacing:-.055em; ma
   .metrics { grid-template-columns:1fr 1fr; }
   .shell { width:min(100% - 24px, 1180px); }
 }
+
+.field-control {
+  width:100%;
+  margin-top:8px;
+  padding:12px 13px;
+  border-radius:10px;
+  border:1px solid var(--line);
+  background:#fff;
+  color:var(--text);
+  outline:none;
+}
+.field-control:focus { border-color:#9fcbb4; box-shadow:0 0 0 3px rgba(23,107,71,.08); }
+.phone-field { display:grid; grid-template-columns:150px 1fr; gap:10px; margin-top:8px; }
+.phone-country { margin-top:0; }
+.phone-number-wrap { position:relative; }
+.phone-prefix { position:absolute; left:13px; top:50%; transform:translateY(-50%); color:var(--muted); z-index:1; }
+.phone-number { margin-top:0; padding-left:64px; }
+.manager-layout { display:grid; grid-template-columns:340px 1fr; gap:18px; align-items:start; }
+.manager-list { display:flex; flex-direction:column; gap:10px; }
+.manager-row { width:100%; text-align:left; background:white; border:1px solid var(--line); border-radius:14px; padding:14px; cursor:pointer; }
+.manager-row.active { border-color:#9fcbb4; box-shadow:0 0 0 3px rgba(23,107,71,.06); }
+.manager-row strong { display:block; margin-bottom:4px; }
+.manager-row span { color:var(--muted); font-size:12px; }
+.status-pill { display:inline-flex; align-items:center; border-radius:999px; padding:6px 9px; font-size:12px; font-weight:700; background:var(--surface-muted); }
+.status-pill.approved { background:#e4f4ea; color:#176b47; }
+.status-pill.pending { background:#fff5d8; color:#755800; }
+.status-pill.rejected { background:#fde8e8; color:#a62929; }
+.detail-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; }
+.detail-item { padding:14px; border:1px solid var(--line); border-radius:14px; background:#fff; }
+.detail-item span { display:block; font-size:11px; text-transform:uppercase; letter-spacing:.06em; color:var(--muted); margin-bottom:5px; }
+.review-actions { display:flex; gap:10px; flex-wrap:wrap; margin-top:18px; }
+.btn-danger { background:#a62929; color:white; }
+.btn-warning { background:#fff5d8; color:#614400; border:1px solid #ead49a; }
+@media (max-width: 900px) {
+  .manager-layout { grid-template-columns:1fr; }
+  .phone-field { grid-template-columns:130px 1fr; }
+}
