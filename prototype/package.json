@@ -5,15 +5,16 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "dev:vinext": "vinext dev",
-    "build:vinext": "vinext build",
+    "dev:vinext": "vite dev",
+    "build:vinext": "vite build",
     "deploy": "npx @vinext/cloudflare deploy"
   },
   "dependencies": {
     "@clerk/nextjs": "latest",
     "next": "^16.0.0",
     "react": "^19.2.0",
-    "react-dom": "^19.2.0"
+    "react-dom": "^19.2.0",
+    "react-server-dom-webpack": "latest"
   },
   "devDependencies": {
     "@types/node": "^22.0.0",
@@ -23,6 +24,9 @@
     "vinext": "latest",
     "vite": "latest",
     "wrangler": "latest",
-    "@vinext/cloudflare": "latest"
+    "@vinext/cloudflare": "latest",
+    "@cloudflare/vite-plugin": "latest",
+    "@vitejs/plugin-react": "latest",
+    "@vitejs/plugin-rsc": "latest"
   }
 }
