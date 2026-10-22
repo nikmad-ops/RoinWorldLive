@@ -1,6 +1,7 @@
 "use client";
 
 import { getCountries, getCountryCallingCode, type CountryCode } from "libphonenumber-js";
+export type { CountryCode };
 
 const displayNames = typeof Intl !== "undefined" && Intl.DisplayNames
   ? new Intl.DisplayNames(["en"], { type: "region" })
