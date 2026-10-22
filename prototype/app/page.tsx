@@ -15,15 +15,12 @@ export default function HomePage() {
             <Link href="/marketplace" className="btn btn-primary">Explore investments</Link>
             <Link href="/onboarding" className="btn btn-secondary">Become an investor</Link>
           </div>
-          <div className="notice">
-            Prototype environment. Investment data, KYC, payments and blockchain verification are simulated.
-          </div>
         </div>
         <aside className="hero-card">
           <div className="eyebrow">Platform snapshot</div>
           <h2 style={{ margin: "10px 0 22px", fontSize: 28 }}>Visibility before and after investment</h2>
           <div className="stat-grid">
-            <div className="stat"><strong>4</strong><span>prototype projects</span></div>
+            <div className="stat"><strong>4</strong><span>active opportunities</span></div>
             <div className="stat"><strong>3</strong><span>asset categories</span></div>
             <div className="stat"><strong>Live</strong><span>operational monitoring</span></div>
             <div className="stat"><strong>SAP</strong><span>financial source of truth</span></div>
@@ -33,8 +30,8 @@ export default function HomePage() {
 
       <section className="section shell">
         <div className="section-title">
-          <div><div className="eyebrow">Investment marketplace</div><h2>Prototype opportunities</h2></div>
-          <p>Registered and eligible investors will see only the opportunities available to their investor profile.</p>
+          <div><div className="eyebrow">Investment marketplace</div><h2>Available opportunities</h2></div>
+          <p>Registered and eligible investors see only the opportunities available to their investor profile.</p>
         </div>
         <div className="grid">
           {projects.map((project) => (
@@ -74,7 +71,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <footer className="footer"><div className="shell">RoinWorld Live · MVP Prototype · 2026</div></footer>
+      <footer className="footer"><div className="shell">RoinWorld Live · 2026</div></footer>
     </main>
   );
 }
