@@ -15,6 +15,12 @@ CREATE TABLE IF NOT EXISTS investor_profiles (
   jurisdiction TEXT,
   kyc_status TEXT NOT NULL DEFAULT 'not_started',
   eligibility_status TEXT NOT NULL DEFAULT 'pending',
+  first_name TEXT,
+  last_name TEXT,
+  date_of_birth TEXT,
+  nationality TEXT,
+  country_of_residence TEXT,
+  phone TEXT,
   created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
