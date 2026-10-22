@@ -21,6 +21,10 @@ CREATE TABLE IF NOT EXISTS investor_profiles (
   nationality TEXT,
   country_of_residence TEXT,
   phone TEXT,
+  phone_country TEXT,
+  review_notes TEXT,
+  reviewed_at TEXT,
+  reviewed_by TEXT,
   created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
@@ -90,4 +94,13 @@ CREATE TABLE IF NOT EXISTS document_verifications (
   signature_status TEXT NOT NULL DEFAULT 'signed',
   blockchain_status TEXT NOT NULL DEFAULT 'simulated_verified',
   verified_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
+
+CREATE TABLE IF NOT EXISTS staff_users (
+  id TEXT PRIMARY KEY,
+  clerk_user_id TEXT UNIQUE NOT NULL,
+  email TEXT,
+  role TEXT NOT NULL,
+  created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
