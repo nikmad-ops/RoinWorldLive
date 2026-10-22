@@ -7,7 +7,7 @@
     "build": "next build",
     "dev:vinext": "vinext dev",
     "build:vinext": "vinext build",
-    "deploy": "vinext build && vinext deploy"
+    "deploy": "npx @vinext/cloudflare deploy"
   },
   "dependencies": {
     "@clerk/nextjs": "latest",
@@ -22,6 +22,7 @@
     "typescript": "^5.9.0",
     "vinext": "latest",
     "vite": "latest",
-    "wrangler": "latest"
+    "wrangler": "latest",
+    "@vinext/cloudflare": "latest"
   }
 }
