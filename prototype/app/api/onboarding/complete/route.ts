@@ -14,6 +14,7 @@ export async function POST(request: Request) {
     nationality?: string;
     countryOfResidence?: string;
     phone?: string;
+    phoneCountry?: string;
     investorType?: string;
     jurisdiction?: string;
   };
@@ -25,6 +26,7 @@ export async function POST(request: Request) {
     nationality: body.nationality?.trim(),
     countryOfResidence: body.countryOfResidence?.trim(),
     phone: body.phone?.trim(),
+    phoneCountry: body.phoneCountry?.trim(),
     investorType: body.investorType?.trim(),
     jurisdiction: body.jurisdiction?.trim(),
   };
@@ -59,7 +61,7 @@ export async function POST(request: Request) {
 
   if (!existing) {
     await env.DB.prepare(
-      "INSERT INTO investor_profiles (id, user_id, investor_type, jurisdiction, kyc_status, eligibility_status, first_name, last_name, date_of_birth, nationality, country_of_residence, phone) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
+      "INSERT INTO investor_profiles (id, user_id, investor_type, jurisdiction, kyc_status, eligibility_status, first_name, last_name, date_of_birth, nationality, country_of_residence, phone, phone_country) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
     ).bind(
       crypto.randomUUID(),
       user.id,
@@ -72,11 +74,12 @@ export async function POST(request: Request) {
       required.dateOfBirth,
       required.nationality,
       required.countryOfResidence,
-      required.phone
+      required.phone,
+      required.phoneCountry
     ).run();
   } else {
     await env.DB.prepare(
-      "UPDATE investor_profiles SET investor_type = ?, jurisdiction = ?, kyc_status = ?, eligibility_status = ?, first_name = ?, last_name = ?, date_of_birth = ?, nationality = ?, country_of_residence = ?, phone = ? WHERE user_id = ?"
+      "UPDATE investor_profiles SET investor_type = ?, jurisdiction = ?, kyc_status = ?, eligibility_status = ?, first_name = ?, last_name = ?, date_of_birth = ?, nationality = ?, country_of_residence = ?, phone = ?, phone_country = ? WHERE user_id = ?"
     ).bind(
       required.investorType,
       required.jurisdiction,
@@ -88,12 +91,13 @@ export async function POST(request: Request) {
       required.nationality,
       required.countryOfResidence,
       required.phone,
+      required.phoneCountry,
       user.id
     ).run();
   }
 
   const profile = await env.DB.prepare(
-    "SELECT id, investor_type, jurisdiction, kyc_status, eligibility_status, first_name, last_name, date_of_birth, nationality, country_of_residence, phone, created_at FROM investor_profiles WHERE user_id = ?"
+    "SELECT id, investor_type, jurisdiction, kyc_status, eligibility_status, first_name, last_name, date_of_birth, nationality, country_of_residence, phone, phone_country, review_notes, reviewed_at, created_at FROM investor_profiles WHERE user_id = ?"
   ).bind(user.id).first();
 
   return Response.json({ profile });
