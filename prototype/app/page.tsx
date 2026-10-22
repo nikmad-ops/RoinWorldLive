@@ -71,7 +71,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <footer className="footer"><div className="shell">RoinWorld Live · 2026</div></footer>
+      <footer className="footer"><div className="shell">RoinWorld Live</div></footer>
     </main>
   );
 }
