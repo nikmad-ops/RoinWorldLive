@@ -1,0 +1,25 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "roinworld-live-dev",
+  "compatibility_date": "2026-10-22",
+  "compatibility_flags": ["nodejs_compat"],
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "roinworld-live-dev",
+      "database_id": "3a106f3b-73d5-4b99-94b2-554e449326fd"
+    }
+  ],
+  "r2_buckets": [
+    {
+      "binding": "ASSETS_BUCKET",
+      "bucket_name": "roinworld-live-assets-dev"
+    }
+  ],
+  "vars": {
+    "APP_ENV": "development",
+    "ENABLE_BLOCKCHAIN_SIMULATION": "true",
+    "ENABLE_MOCK_KYC": "true",
+    "ENABLE_MOCK_PAYMENTS": "true"
+  }
+}
