@@ -6,7 +6,7 @@ export default function MarketplacePage() {
     <main className="section shell">
       <div className="section-title">
         <div><div className="eyebrow">Eligible investor view</div><h2>Explore investments</h2></div>
-        <p>Demo view after successful KYC and investor classification.</p>
+        <p>Opportunities are filtered according to your investor classification, jurisdiction and eligibility profile.</p>
       </div>
       <div className="notice" style={{ marginBottom: 24 }}>
         KYC Status: Approved · Classification: Professional Investor · Jurisdiction: UAE
