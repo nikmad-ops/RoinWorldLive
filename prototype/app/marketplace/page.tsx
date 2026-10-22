@@ -48,12 +48,28 @@ export default function MarketplacePage() {
   }
 
   if (profile?.eligibility_status !== "eligible") {
+    const pending = profile?.kyc_status === "pending_review";
+    const moreInfo = profile?.kyc_status === "more_info_required";
+    const rejected = profile?.eligibility_status === "rejected";
+
     return (
       <main className="section shell" style={{ maxWidth: 820 }}>
         <div className="eyebrow">Investment marketplace</div>
-        <h1 style={{ fontSize: 48 }}>Complete investor onboarding</h1>
-        <p className="lead">Your investor profile must be completed before investment opportunities can be displayed.</p>
-        <Link href="/onboarding" className="btn btn-primary">Complete onboarding</Link>
+        <h1 style={{ fontSize: 48 }}>
+          {pending ? "Investor profile under review" : moreInfo ? "Additional information required" : rejected ? "Investment access unavailable" : "Complete investor onboarding"}
+        </h1>
+        <p className="lead">
+          {pending
+            ? "Your profile has been submitted. Investment opportunities will become available after compliance and eligibility approval."
+            : moreInfo
+              ? "The platform team requires additional information before your eligibility review can be completed."
+              : rejected
+                ? "Your current investor profile is not eligible for investment access."
+                : "Your investor profile must be completed before investment opportunities can be displayed."}
+        </p>
+        <Link href="/onboarding" className="btn btn-primary">
+          {pending ? "View investor profile" : moreInfo ? "Update investor profile" : rejected ? "View decision" : "Complete onboarding"}
+        </Link>
       </main>
     );
   }
