@@ -28,5 +28,6 @@
     "@cloudflare/vite-plugin": "latest",
     "@vitejs/plugin-react": "latest",
     "@vitejs/plugin-rsc": "latest"
-  }
+  },
+  "type": "module"
 }
