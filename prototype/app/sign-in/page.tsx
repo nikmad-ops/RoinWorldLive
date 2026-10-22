@@ -9,7 +9,13 @@ export default function SignInPage() {
   if (clerkConfigured) {
     return (
       <main className="section shell" style={{ display: "grid", placeItems: "center" }}>
-        <SignIn routing="hash" />
+        <SignIn
+          routing="hash"
+          forceRedirectUrl="/onboarding"
+          signUpForceRedirectUrl="/onboarding"
+          fallbackRedirectUrl="/onboarding"
+          signUpFallbackRedirectUrl="/onboarding"
+        />
       </main>
     );
   }
