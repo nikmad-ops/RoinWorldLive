@@ -14,7 +14,8 @@
     "next": "^16.0.0",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
-    "react-server-dom-webpack": "latest"
+    "react-server-dom-webpack": "latest",
+    "libphonenumber-js": "latest"
   },
   "devDependencies": {
     "@types/node": "^22.0.0",
