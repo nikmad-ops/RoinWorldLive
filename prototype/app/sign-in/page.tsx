@@ -17,13 +17,10 @@ export default function SignInPage() {
   return (
     <main className="section shell" style={{ maxWidth: 720 }}>
       <div className="eyebrow">Authentication</div>
-      <h1 style={{ fontSize: 48 }}>Clerk integration ready</h1>
-      <p className="lead">
-        The existing RoinWorld Live Clerk application will become active when its deployment keys are configured.
-      </p>
-      <div className="notice">No Clerk secrets are stored in GitHub.</div>
+      <h1 style={{ fontSize: 48 }}>Sign in to RoinWorld Live</h1>
+      <p className="lead">Access your investment opportunities, applications and project reporting.</p>
       <div style={{ marginTop: 22 }}>
-        <Link href="/onboarding" className="btn btn-primary">Continue with demo flow</Link>
+        <Link href="/onboarding" className="btn btn-primary">Create investor account</Link>
       </div>
     </main>
   );
