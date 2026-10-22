@@ -29,7 +29,7 @@ async function ensureProfile() {
   }
 
   let profile = await env.DB.prepare(
-    "SELECT id, investor_type, jurisdiction, kyc_status, eligibility_status, first_name, last_name, date_of_birth, nationality, country_of_residence, phone, created_at FROM investor_profiles WHERE user_id = ?"
+    "SELECT id, investor_type, jurisdiction, kyc_status, eligibility_status, first_name, last_name, date_of_birth, nationality, country_of_residence, phone, phone_country, review_notes, reviewed_at, created_at FROM investor_profiles WHERE user_id = ?"
   ).bind(user.id).first();
 
   if (!profile) {
@@ -39,7 +39,7 @@ async function ensureProfile() {
     ).bind(profileId, user.id, "unclassified", null, "not_started", "pending", firstName, lastName).run();
 
     profile = await env.DB.prepare(
-      "SELECT id, investor_type, jurisdiction, kyc_status, eligibility_status, first_name, last_name, date_of_birth, nationality, country_of_residence, phone, created_at FROM investor_profiles WHERE user_id = ?"
+      "SELECT id, investor_type, jurisdiction, kyc_status, eligibility_status, first_name, last_name, date_of_birth, nationality, country_of_residence, phone, phone_country, review_notes, reviewed_at, created_at FROM investor_profiles WHERE user_id = ?"
     ).bind(user.id).first();
   }
 
