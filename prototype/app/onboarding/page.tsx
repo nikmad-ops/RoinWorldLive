@@ -5,13 +5,18 @@ export default function OnboardingPage() {
     <main className="section shell">
       <div className="eyebrow">Investor onboarding</div>
       <h1 style={{ fontSize: 48 }}>Become an eligible investor</h1>
-      <p className="lead">The MVP simulates identity verification, KYC/KYB and investor classification. Clerk will handle real authentication.</p>
+      <p className="lead">Complete identity verification, KYC/KYB and investor classification to access eligible investment opportunities.</p>
       <div className="steps" style={{ marginTop: 30 }}>
-        {["Create account","Verify identity","Complete KYC","Investor classification"].map((title, i) => (
-          <div className="step" key={title}><div className="step-num">{i+1}</div><h3>{title}</h3><p>{i < 3 ? "Demo step prepared for the MVP workflow." : "Demo result: Professional Investor."}</p></div>
+        {[
+          ["Create account", "Create your secure RoinWorld Live account."],
+          ["Verify identity", "Confirm your identity or company details."],
+          ["Complete KYC", "Complete compliance, sanctions and source-of-funds checks."],
+          ["Investor classification", "Confirm your investor category and eligibility profile."],
+        ].map(([title, text], i) => (
+          <div className="step" key={title}><div className="step-num">{i+1}</div><h3>{title}</h3><p>{text}</p></div>
         ))}
       </div>
-      <div style={{ marginTop: 26 }}><Link href="/marketplace" className="btn btn-primary">Simulate approval and continue</Link></div>
+      <div style={{ marginTop: 26 }}><Link href="/marketplace" className="btn btn-primary">Continue to investments</Link></div>
     </main>
   );
 }
