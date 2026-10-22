@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { AuthShell } from "@/components/auth-shell";
-import { HeaderActions } from "@/components/header-actions";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -25,7 +24,10 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
                 <a href="/#how-it-works">How it works</a>
                 <a href="/#transparency">Transparency</a>
               </nav>
-              <HeaderActions />
+              <div className="actions">
+                <Link className="btn btn-secondary" href="/sign-in">Sign in</Link>
+                <Link className="btn btn-primary" href="/onboarding">Investor profile</Link>
+              </div>
             </div>
           </header>
           {children}
