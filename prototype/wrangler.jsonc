@@ -1,8 +1,15 @@
 {
   "$schema": "./node_modules/wrangler/config-schema.json",
   "name": "roinworld-live-dev",
+  "main": "vinext/server/fetch-handler",
   "compatibility_date": "2026-10-22",
   "compatibility_flags": ["nodejs_compat"],
+  "preview_urls": false,
+  "assets": {
+    "directory": "dist/client",
+    "not_found_handling": "none",
+    "binding": "ASSETS"
+  },
   "d1_databases": [
     {
       "binding": "DB",
@@ -20,6 +27,7 @@
     "APP_ENV": "development",
     "ENABLE_BLOCKCHAIN_SIMULATION": "true",
     "ENABLE_MOCK_KYC": "true",
-    "ENABLE_MOCK_PAYMENTS": "true"
+    "ENABLE_MOCK_PAYMENTS": "true",
+    "NEXT_PUBLIC_APP_URL": "https://dev.roinworld.live"
   }
 }
