@@ -33,6 +33,11 @@ The first prototype will cover:
 - Hospital Development
 - Data Center
 
+## Deployment
+
+- Cloudflare Workers Builds connected to `main`.
+- Development domain: `dev.roinworld.live`.
+
 ## Current state
 
 Scaffold only. No production authentication, KYC, payments, blockchain, SAP or regulatory logic is implemented yet.
