@@ -1,42 +1,25 @@
-import { env } from "cloudflare:workers";
-
 const encoder = new TextEncoder();
+const PASSWORD_HASH = "bacba03a67fe7ee8435f1d293f8d4b90c872f82b5b198de73ebbae002022bcb0";
+const ACCESS_TOKEN = "012728da171d38789dcb029355795c953620476d350bbc02895a67a9b644291b";
 
-function constantTimeEqual(a: string, b: string) {
-  const aa = encoder.encode(a);
-  const bb = encoder.encode(b);
-  if (aa.length !== bb.length) return false;
-  let diff = 0;
-  for (let i = 0; i < aa.length; i++) diff |= aa[i] ^ bb[i];
-  return diff === 0;
-}
-
-async function accessToken() {
-  const key = await crypto.subtle.importKey(
-    "raw",
-    encoder.encode(env.ACCESS_GATE_SECRET),
-    { name: "HMAC", hash: "SHA-256" },
-    false,
-    ["sign"]
-  );
-  const signature = await crypto.subtle.sign("HMAC", key, encoder.encode("rwl-access"));
-  return Array.from(new Uint8Array(signature), (byte) => byte.toString(16).padStart(2, "0")).join("");
+async function sha256(value: string) {
+  const digest = await crypto.subtle.digest("SHA-256", encoder.encode(value));
+  return Array.from(new Uint8Array(digest), (byte) => byte.toString(16).padStart(2, "0")).join("");
 }
 
 export async function POST(request: Request) {
   const body = await request.json().catch(() => ({})) as { password?: string };
   const supplied = body.password || "";
 
-  if (!env.ACCESS_GATE_PASSWORD || !constantTimeEqual(supplied, env.ACCESS_GATE_PASSWORD)) {
+  if (await sha256(supplied) !== PASSWORD_HASH) {
     return Response.json({ error: "invalid_password" }, { status: 401 });
   }
 
-  const token = await accessToken();
   return new Response(JSON.stringify({ ok: true }), {
     status: 200,
     headers: {
       "content-type": "application/json",
-      "set-cookie": `rwl_access=${token}; Path=/; HttpOnly; Secure; SameSite=Lax; Max-Age=604800`,
+      "set-cookie": `rwl_access=${ACCESS_TOKEN}; Path=/; HttpOnly; Secure; SameSite=Lax; Max-Age=604800`,
       "cache-control": "no-store",
     },
   });
