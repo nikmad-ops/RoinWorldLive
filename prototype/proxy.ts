@@ -1,21 +1,7 @@
 import { clerkMiddleware } from "@clerk/nextjs/server";
 import { NextResponse } from "next/server";
-import { env } from "cloudflare:workers";
 
-const encoder = new TextEncoder();
-
-async function expectedAccessToken() {
-  if (!env.ACCESS_GATE_SECRET) return "";
-  const key = await crypto.subtle.importKey(
-    "raw",
-    encoder.encode(env.ACCESS_GATE_SECRET),
-    { name: "HMAC", hash: "SHA-256" },
-    false,
-    ["sign"]
-  );
-  const signature = await crypto.subtle.sign("HMAC", key, encoder.encode("rwl-access"));
-  return Array.from(new Uint8Array(signature), (byte) => byte.toString(16).padStart(2, "0")).join("");
-}
+const ACCESS_TOKEN = "012728da171d38789dcb029355795c953620476d350bbc02895a67a9b644291b";
 
 export default clerkMiddleware(async (auth, request) => {
   const pathname = request.nextUrl.pathname;
@@ -33,9 +19,7 @@ export default clerkMiddleware(async (auth, request) => {
   if (userId) return NextResponse.next();
 
   const cookie = request.cookies.get("rwl_access")?.value;
-  if (cookie && cookie === await expectedAccessToken()) {
-    return NextResponse.next();
-  }
+  if (cookie === ACCESS_TOKEN) return NextResponse.next();
 
   if (pathname.startsWith("/api/")) {
     return Response.json({ error: "access_required" }, { status: 401 });
